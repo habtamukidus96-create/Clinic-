@@ -1,31 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Admin Panel</title>
+  <title>Admin</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>Clinic Admin Dashboard</h1>
+<h1>Super Admin Panel</h1>
 
-<div id="list"></div>
+<button onclick="load()">Load Clinics</button>
+
+<div id="data"></div>
 
 <script>
-async function load() {
-  const res = await fetch("/api/appointments");
+async function load(){
+  const res = await fetch("/api/admin/all");
   const data = await res.json();
 
-  document.getElementById("list").innerHTML =
-    data.map(a => `
-      <div style="border:1px solid #ccc; margin:10px; padding:10px">
-        <b>${a.name}</b><br/>
-        ${a.phone}<br/>
-        ${a.service}<br/>
-        ${a.date}
+  document.getElementById("data").innerHTML =
+    data.map(c => `
+      <div class="card">
+        <b>${c.email}</b><br>
+        Appointments: ${c.appointments.length}
       </div>
     `).join("");
 }
-
-load();
 </script>
 
 </body>

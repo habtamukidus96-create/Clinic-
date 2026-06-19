@@ -1,249 +1,45 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Segoe UI", Arial, sans-serif;
+body{
+  font-family: Arial;
+  background:#f4f7ff;
+  margin:0;
 }
 
-body {
-  background: #f4f7fb;
-  color: #1c1c1c;
+header{
+  background:#0b3d91;
+  color:white;
+  padding:15px;
+  text-align:center;
 }
 
-/* TOP BAR */
-.top-bar {
-  background: linear-gradient(90deg, #ff3b3b, #ff6b6b);
-  color: white;
-  text-align: center;
-  padding: 10px;
-  font-weight: bold;
+.hero{
+  text-align:center;
+  padding:80px;
+  background:#0b3d91;
+  color:white;
 }
 
-/* HEADER */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 40px;
-  background: white;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+button{
+  padding:10px;
+  background:#00c2ff;
+  border:none;
+  color:white;
+  cursor:pointer;
 }
 
-header h1 {
-  color: #0b3d91;
-  font-size: 22px;
+.card{
+  background:white;
+  padding:15px;
+  margin:10px;
+  border-radius:10px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
 
-nav a {
-  margin: 0 12px;
-  text-decoration: none;
-  color: #333;
-  font-weight: 500;
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
 }
 
-nav a:hover {
-  color: #0b3d91;
-}
-
-/* HERO */
-.hero {
-  height: 80vh;
-  background: linear-gradient(rgba(11,61,145,0.8), rgba(28,109,208,0.8)),
-    url("https://images.unsplash.com/photo-1586773860418-d37222d8fce3") center/cover;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  text-align: center;
-  padding: 20px;
-}
-
-.hero h2 {
-  font-size: 42px;
-  margin-bottom: 10px;
-}
-
-.hero p {
-  font-size: 18px;
-  max-width: 600px;
-}
-
-.hero button {
-  margin-top: 20px;
-  padding: 12px 25px;
-  border: none;
-  background: #00c2ff;
-  color: white;
-  font-size: 16px;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.hero button:hover {
-  background: #009dd1;
-  transform: scale(1.05);
-}
-
-/* SECTIONS */
-section {
-  padding: 60px 20px;
-}
-
-section h2 {
-  text-align: center;
-  font-size: 28px;
-  margin-bottom: 30px;
-  color: #0b3d91;
-}
-
-/* GRID */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-  max-width: 1100px;
-  margin: auto;
-}
-
-/* CARDS */
-.card {
-  background: white;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-  text-align: center;
-  transition: 0.3s;
-}
-
-.card:hover {
-  transform: translateY(-8px);
-}
-
-/* DOCTORS */
-.doctor {
-  background: white;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-  transition: 0.3s;
-}
-
-.doctor:hover {
-  transform: scale(1.03);
-}
-
-.doctor img {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
-}
-
-.doctor h3 {
-  margin: 10px;
-  color: #0b3d91;
-}
-
-.doctor p {
-  margin-bottom: 15px;
-  color: #666;
-}
-
-/* FORM */
-form {
-  max-width: 450px;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-input, select {
-  padding: 12px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-}
-
-button {
-  padding: 12px;
-  background: #0b3d91;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-button:hover {
-  background: #062a66;
-}
-
-/* CONTACT */
-#contact {
-  text-align: center;
-  background: #0b3d91;
-  color: white;
-}
-
-/* FOOTER */
-footer {
-  background: #071a3d;
-  color: white;
-  text-align: center;
-  padding: 30px;
-}
-
-footer .tagline {
-  margin-top: 10px;
-  color: #00c2ff;
-}
-
-/* CHATBOT */
-#chatbot {
-  position: fixed;
-  bottom: 80px;
-  right: 20px;
-  width: 280px;
-  background: white;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-  display: none;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-#chat-header {
-  background: #0b3d91;
-  color: white;
-  padding: 10px;
-  font-weight: bold;
-}
-
-#chat-box {
-  height: 220px;
-  overflow-y: auto;
-  padding: 10px;
-  font-size: 14px;
-}
-
-#userInput {
-  border: none;
-  padding: 10px;
-  outline: none;
-}
-
-#chat-toggle {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  padding: 12px 18px;
-  border-radius: 30px;
-  background: #0b3d91;
-  color: white;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+.center{
+  width:300px;
+  margin:100px auto;
 }

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mercy Care Clinic</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  🚨 Emergency? Call +251 911 000 000
+</div>
+
+<!-- NAV -->
+<header>
+  <h1>Mercy Care Clinic</h1>
+  <nav>
+    <a href="#services">Services</a>
+    <a href="#doctors">Doctors</a>
+    <a href="#appointment">Appointment</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <h2>Quality Healthcare You Can Trust</h2>
+  <p>Modern care, experienced doctors, and fast service in Addis Ababa</p>
+  <button onclick="scrollToAppointment()">Book Appointment</button>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <h2>Our Services</h2>
+  <div class="grid">
+    <div class="card">General Consultation</div>
+    <div class="card">Pediatrics</div>
+    <div class="card">Dental Care</div>
+    <div class="card">Emergency Care</div>
+    <div class="card">Laboratory Tests</div>
+    <div class="card">Pharmacy</div>
+  </div>
+</section>
+
+<!-- DOCTORS -->
+<section id="doctors">
+  <h2>Our Doctors</h2>
+  <div class="grid">
+
+    <div class="doctor">
+      <img src="https://source.unsplash.com/400x400/?ethiopian,doctor,man" />
+      <h3>Dr. Samuel T.</h3>
+      <p>General Physician</p>
+    </div>
+
+    <div class="doctor">
+      <img src="https://source.unsplash.com/400x400/?ethiopian,doctor,woman" />
+      <h3>Dr. Almaz K.</h3>
+      <p>Pediatric Specialist</p>
+    </div>
+
+    <div class="doctor">
+      <img src="https://source.unsplash.com/400x400/?african,doctor,medical" />
+      <h3>Dr. Henok M.</h3>
+      <p>Dentist</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- APPOINTMENT -->
+<section id="appointment">
+  <h2>Book Appointment</h2>
+
+  <form onsubmit="bookAppointment(event)">
+    <input type="text" placeholder="Full Name" required />
+    <input type="text" placeholder="Phone Number" required />
+
+    <select required>
+      <option value="">Select Service</option>
+      <option>General Consultation</option>
+      <option>Pediatrics</option>
+      <option>Dental Care</option>
+      <option>Emergency Care</option>
+    </select>
+
+    <input type="date" required />
+    <button type="submit">Submit</button>
+  </form>
+
+  <p id="msg"></p>
+</section>
+
+<!-- TESTIMONIALS -->
+<section>
+  <h2>Patient Testimonials</h2>
+  <div class="grid">
+    <div class="card">“Very professional doctors and fast service!” ⭐⭐⭐⭐⭐</div>
+    <div class="card">“Clean clinic and caring staff.” ⭐⭐⭐⭐⭐</div>
+    <div class="card">“Best clinic in Addis Ababa.” ⭐⭐⭐⭐⭐</div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2>Contact Us</h2>
+  <p>📍 Addis Ababa, Ethiopia</p>
+  <p>📞 +251 911 000 000</p>
+  <p>✉ mercycare@gmail.com</p>
+</section>
+
+<!-- DEVELOPER INFO -->
+<footer>
+  <h3>Website Built By</h3>
+  <p><b>Kidus Habtamu</b></p>
+  <p>Email: habtamutito257@gmail.com</p>
+  <p>Phone: 0912643473</p>
+  <p class="tagline">I build modern AI-powered websites for clinics and businesses.</p>
+</footer>
+
+<!-- CHATBOT -->
+<div id="chatbot">
+  <div id="chat-header">AI Assistant 💬</div>
+  <div id="chat-box"></div>
+  <input id="userInput" type="text" placeholder="Ask something..." />
+</div>
+
+<button id="chat-toggle" onclick="toggleChat()">Chat</button>
+
+<script src="script.js"></script>
+</body>
+</html>

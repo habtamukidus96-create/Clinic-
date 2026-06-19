@@ -1,1 +1,136 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f4f9ff;
+}
 
+.top-bar {
+  background: red;
+  color: white;
+  text-align: center;
+  padding: 8px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  background: #0b3d91;
+  color: white;
+}
+
+nav a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+.hero {
+  text-align: center;
+  padding: 60px;
+  background: linear-gradient(#0b3d91, #1c6dd0);
+  color: white;
+}
+
+.hero button {
+  padding: 10px 20px;
+  border: none;
+  background: white;
+  color: #0b3d91;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+section {
+  padding: 40px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.card, .doctor {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.doctor img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: auto;
+}
+
+input, select, button {
+  margin: 5px 0;
+  padding: 10px;
+}
+
+button {
+  background: #0b3d91;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* CHATBOT */
+#chatbot {
+  position: fixed;
+  bottom: 60px;
+  right: 20px;
+  width: 250px;
+  background: white;
+  border: 1px solid #ccc;
+  display: none;
+  flex-direction: column;
+}
+
+#chat-header {
+  background: #0b3d91;
+  color: white;
+  padding: 8px;
+}
+
+#chat-box {
+  height: 200px;
+  overflow-y: auto;
+  padding: 5px;
+  font-size: 14px;
+}
+
+#userInput {
+  border: none;
+  padding: 8px;
+}
+
+#chat-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px;
+  background: #0b3d91;
+  color: white;
+  border: none;
+}
+
+footer {
+  background: #0b3d91;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}

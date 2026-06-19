@@ -1,44 +1,45 @@
-function scrollToAppointment() {
-  document.getElementById("appointment").scrollIntoView({ behavior: "smooth" });
-}
+/* APPOINTMENT SYSTEM */
+const form = document.getElementById("appointmentForm");
 
-function bookAppointment(e) {
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
-  document.getElementById("msg").innerText =
-    "✅ Appointment submitted successfully! We will contact you soon.";
-}
 
-/* CHATBOT */
-const chatBox = document.getElementById("chat-box");
-const input = document.getElementById("userInput");
+  const data = {
+    name: form.name.value,
+    phone: form.phone.value,
+    service: form.service.value,
+    date: form.date.value
+  };
 
-function toggleChat() {
-  const chat = document.getElementById("chatbot");
-  chat.style.display = chat.style.display === "flex" ? "none" : "flex";
-}
+  const res = await fetch("/api/appointment", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
 
-/* simple AI logic */
-input.addEventListener("keypress", function(e) {
-  if (e.key === "Enter") {
-    let msg = input.value;
-    chatBox.innerHTML += "<div><b>You:</b> " + msg + "</div>";
-
-    let reply = getReply(msg.toLowerCase());
-
-    setTimeout(() => {
-      chatBox.innerHTML += "<div><b>AI:</b> " + reply + "</div>";
-      chatBox.scrollTop = chatBox.scrollHeight;
-    }, 500);
-
-    input.value = "";
-  }
+  const result = await res.json();
+  alert(result.message);
 });
 
-function getReply(msg) {
-  if (msg.includes("hello")) return "Hello 👋 Welcome to Mercy Care Clinic!";
-  if (msg.includes("doctor")) return "We have general, dental, and pediatric specialists.";
-  if (msg.includes("book")) return "Go to appointment section to book easily.";
-  if (msg.includes("price")) return "Consultation starts from affordable rates.";
-  if (msg.includes("emergency")) return "Call +251 911 000 000 immediately.";
-  return "I can help with appointments, doctors, and clinic info.";
-}
+/* AI CHATBOT */
+const chatInput = document.getElementById("chatInput");
+const chatBox = document.getElementById("chatBox");
+
+chatInput.addEventListener("keypress", async (e) => {
+  if (e.key === "Enter") {
+    const msg = chatInput.value;
+
+    chatBox.innerHTML += `<div><b>You:</b> ${msg}</div>`;
+
+    const res = await fetch("/api/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: msg })
+    });
+
+    const data = await res.json();
+
+    chatBox.innerHTML += `<div><b>AI:</b> ${data.reply}</div>`;
+    chatInput.value = "";
+  }
+});

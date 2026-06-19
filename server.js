@@ -9,52 +9,59 @@ app.use(express.static("public"));
 
 const DB_FILE = "./db.json";
 
-/* read DB */
-function readDB() {
+function db() {
   return fs.readJsonSync(DB_FILE);
 }
 
-/* write DB */
-function writeDB(data) {
+function save(data) {
   fs.writeJsonSync(DB_FILE, data);
 }
 
-/* BOOK APPOINTMENT */
-app.post("/api/appointment", (req, res) => {
-  const db = readDB();
+/* LOGIN / REGISTER CLINIC */
+app.post("/api/login", (req, res) => {
+  const { email } = req.body;
+  const data = db();
 
-  const newAppointment = {
+  let clinic = data.clinics.find(c => c.email === email);
+
+  if (!clinic) {
+    clinic = {
+      id: Date.now(),
+      name: "New Clinic",
+      email,
+      appointments: []
+    };
+    data.clinics.push(clinic);
+    save(data);
+  }
+
+  res.json({ clinicId: clinic.id });
+});
+
+/* BOOK APPOINTMENT */
+app.post("/api/:id/book", (req, res) => {
+  const data = db();
+  const clinic = data.clinics.find(c => c.id == req.params.id);
+
+  clinic.appointments.push({
     id: Date.now(),
     ...req.body
-  };
+  });
 
-  db.appointments.push(newAppointment);
-  writeDB(db);
-
-  res.json({ success: true, message: "Appointment saved!" });
+  save(data);
+  res.json({ success: true });
 });
 
-/* GET APPOINTMENTS (ADMIN) */
-app.get("/api/appointments", (req, res) => {
-  const db = readDB();
-  res.json(db.appointments);
+/* GET DATA */
+app.get("/api/:id", (req, res) => {
+  const data = db();
+  const clinic = data.clinics.find(c => c.id == req.params.id);
+  res.json(clinic);
 });
 
-/* AI CHATBOT (SMART LOGIC) */
-app.post("/api/chat", (req, res) => {
-  const msg = req.body.message.toLowerCase();
-
-  let reply = "I can help with booking, doctors, and services.";
-
-  if (msg.includes("hello")) reply = "Hello 👋 Welcome to Mercy Care Clinic!";
-  else if (msg.includes("doctor")) reply = "We have general, dental, and pediatric specialists in Addis Ababa.";
-  else if (msg.includes("book")) reply = "You can book an appointment from the booking form.";
-  else if (msg.includes("emergency")) reply = "Call +251 911 000 000 immediately!";
-  else if (msg.includes("price")) reply = "We offer affordable consultation fees.";
-
-  res.json({ reply });
+/* ADMIN VIEW ALL CLINICS */
+app.get("/api/admin/all", (req, res) => {
+  res.json(db().clinics);
 });
 
-app.listen(3000, () => {
-  console.log("Clinic Pro running on http://localhost:3000");
-});
+app.listen(3000, () => console.log("SAAS running"));
